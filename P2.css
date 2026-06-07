@@ -1,0 +1,975 @@
+/* ============================================================
+   style.css — DecodeLabs Project 2 · Responsive Web Layout
+   Strategy : MOBILE-FIRST (base = mobile, enhance upward)
+   Breakpoints: 480px | 768px | 1024px  (page 9)
+   ============================================================ */
+
+
+/* ============================================================
+   1. CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --clr-bg:          #0f0e0e;
+  --clr-surface:     #1a1918;
+  --clr-surface-alt: #222120;
+  --clr-accent:      #e8c547;
+  --clr-accent-dim:  #c9a830;
+  --clr-text:        #f0ede8;
+  --clr-text-muted:  #8a8480;
+  --clr-border:      #2e2c2b;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* Fluid spacing using rem (fluid unit) */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  6rem;
+
+  --max-width: 1200px;
+  --gutter:    1.25rem;
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+
+  /* Touch target minimum — 44px (page 15) */
+  --touch-target: 44px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* ============================================================
+   2. RESET & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  /* Never set user-scalable=no — allow up to 500% zoom (page 16) */
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85em;
+  background-color: var(--clr-surface-alt);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  color: var(--clr-accent);
+}
+
+
+/* ============================================================
+   3. LAYOUT UTILITIES
+   ============================================================ */
+.container {
+  /* Fluid width using % (fluid unit) */
+  width: min(var(--max-width), 100% - (var(--gutter) * 2));
+  margin-inline: auto;
+}
+
+.section-header {
+  margin-bottom: var(--space-lg);
+}
+
+/* Fluid eyebrow label */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin-bottom: var(--space-xs);
+}
+
+/* Fluid section title using clamp() (page 13) */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+
+/* ============================================================
+   4. BUTTONS — 44px min touch target (page 15)
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target);   /* 44px touch target */
+  padding: 0 1.5rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 0.2s var(--ease-out),
+              color 0.2s var(--ease-out),
+              transform 0.15s var(--ease-out);
+}
+
+.btn:hover  { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn--primary {
+  background-color: var(--clr-accent);
+  color: var(--clr-bg);
+}
+.btn--primary:hover { background-color: var(--clr-accent-dim); }
+
+.btn--ghost {
+  background-color: transparent;
+  color: var(--clr-text-muted);
+  border-color: var(--clr-border);
+}
+.btn--ghost:hover {
+  color: var(--clr-text);
+  border-color: var(--clr-text-muted);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--clr-accent);
+  border-color: var(--clr-accent);
+}
+.btn--outline:hover {
+  background-color: var(--clr-accent);
+  color: var(--clr-bg);
+}
+
+
+/* ============================================================
+   5. SITE HEADER
+   ============================================================ */
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 100;
+  height: 64px;
+  border-bottom: 1px solid var(--clr-border);
+  background-color: rgba(15, 14, 14, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.site-header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header__logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--clr-accent);
+  line-height: 1;
+  /* Logo is also a touch target */
+  min-height: var(--touch-target);
+  display: flex;
+  align-items: center;
+}
+
+/* DESKTOP NAV — hidden on mobile, shown on tablet+ */
+.site-nav { display: none; }
+
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.site-nav__link {
+  font-size: 0.875rem;
+  color: var(--clr-text-muted);
+  /* 44px touch target height */
+  min-height: var(--touch-target);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.site-nav__link:hover { color: var(--clr-text); }
+
+.site-nav__link--cta {
+  background-color: var(--clr-accent);
+  color: var(--clr-bg);
+  padding: 0 1.25rem;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+.site-nav__link--cta:hover {
+  background-color: var(--clr-accent-dim);
+  color: var(--clr-bg);
+}
+
+
+/* ============================================================
+   6. HAMBURGER BUTTON — mobile only (page 14)
+   ============================================================ */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  /* 44×44px touch target */
+  width: var(--touch-target);
+  height: var(--touch-target);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s;
+}
+.hamburger:hover { background-color: var(--clr-surface-alt); }
+
+.hamburger__bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--clr-text);
+  border-radius: 2px;
+  transition: transform 0.2s;
+}
+
+
+/* ============================================================
+   7. MOBILE NAV POPOVER — HTML Popover API (page 14)
+   ============================================================ */
+.mobile-nav {
+  /* Reset popover defaults */
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: var(--space-md);
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  border: none;
+  background-color: var(--clr-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  /* Hidden by default — shown via popover API */
+  opacity: 0;
+  transition: opacity 0.25s var(--ease-out);
+}
+
+/* Popover open state */
+.mobile-nav:popover-open {
+  opacity: 1;
+}
+
+/* Backdrop */
+.mobile-nav::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.mobile-nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  /* 44×44px touch target */
+  width: var(--touch-target);
+  height: var(--touch-target);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  color: var(--clr-text);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.mobile-nav__close:hover { background-color: var(--clr-surface-alt); }
+
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  max-width: 320px;
+}
+
+.mobile-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  /* Large touch target for mobile */
+  min-height: 56px;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: 700;
+  color: var(--clr-text-muted);
+  border-bottom: 1px solid var(--clr-border);
+  transition: color 0.2s;
+}
+.mobile-nav__link:hover { color: var(--clr-text); }
+
+.mobile-nav__link--cta {
+  background-color: var(--clr-accent);
+  color: var(--clr-bg);
+  border-radius: var(--radius-sm);
+  border-bottom: none;
+  margin-top: var(--space-sm);
+  font-size: 1rem;
+  font-family: var(--font-body);
+}
+.mobile-nav__link--cta:hover { background-color: var(--clr-accent-dim); color: var(--clr-bg); }
+
+
+/* ============================================================
+   8. HERO — MOBILE FIRST
+   ============================================================ */
+.hero {
+  padding-block-start: calc(64px + var(--space-lg));
+  padding-block-end: 0;
+  overflow: hidden;
+}
+
+.hero__inner {
+  /* Mobile: single column stacked */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Fluid hero heading (clamp — page 13) */
+.hero__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 8vw, 5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-md);
+}
+.hero__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--clr-accent);
+}
+
+.hero__body {
+  /* Fluid font size */
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  color: var(--clr-text-muted);
+  max-width: 52ch;
+  margin-bottom: var(--space-md);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+/* Device stack visual */
+.device-stack {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  margin-inline: auto;
+}
+
+.device {
+  border: 2px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  background-color: var(--clr-surface);
+  overflow: hidden;
+}
+
+.device--desktop {
+  width: 100%;
+  padding: 0.75rem;
+}
+
+.device--mobile {
+  width: 45%;
+  padding: 0.5rem;
+  margin-top: var(--space-sm);
+  margin-inline-start: auto;
+  border-color: var(--clr-accent);
+}
+
+.device__screen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.device__bar {
+  height: 8px;
+  background-color: var(--clr-surface-alt);
+  border-radius: 4px;
+  width: 60%;
+}
+.device__bar--wide  { width: 100%; }
+.device__bar--short { width: 35%; }
+
+.device__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.device__card {
+  height: 36px;
+  background-color: var(--clr-surface-alt);
+  border-radius: 4px;
+}
+
+/* Scrolling ticker */
+.ticker {
+  margin-block-start: var(--space-xl);
+  border-block: 1px solid var(--clr-border);
+  padding-block: 0.75rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker__track {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  animation: ticker-scroll 40s linear infinite;
+}
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
+/* ============================================================
+   9. ABOUT — MOBILE FIRST
+   ============================================================ */
+.about {
+  padding-block: var(--space-xl);
+}
+
+/* Mobile: stacked column */
+.about__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.about__figure { position: relative; }
+
+.about__photo {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--clr-border);
+}
+
+.about__badge {
+  position: absolute;
+  bottom: var(--space-sm);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--clr-accent);
+  color: var(--clr-bg);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Fluid about headline */
+.about__headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-block: var(--space-sm) var(--space-md);
+}
+
+.about__body {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+/* Fact list */
+.fact-list {
+  margin-top: var(--space-md);
+  border-top: 1px solid var(--clr-border);
+}
+.fact-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding-block: var(--space-sm);
+  border-bottom: 1px solid var(--clr-border);
+  font-size: clamp(0.85rem, 2vw, 0.9375rem);
+  color: var(--clr-text-muted);
+  /* Ensure 44px min height for readability */
+  min-height: var(--touch-target);
+}
+.fact-list__num {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--clr-accent);
+  flex-shrink: 0;
+  width: 2rem;
+}
+
+
+/* ============================================================
+   10. SKILLS — auto-fit grid (page 11)
+   ============================================================ */
+.skills {
+  padding-block: var(--space-xl);
+  background-color: var(--clr-surface);
+  border-block: 1px solid var(--clr-border);
+}
+
+/* auto-fit grid: self-responsive, no media queries needed */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: 1px;
+  background-color: var(--clr-border);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.skill-card {
+  background-color: var(--clr-surface);
+  padding: var(--space-md);
+  transition: background-color 0.2s;
+}
+.skill-card:hover       { background-color: var(--clr-surface-alt); }
+.skill-card--accent     { background-color: var(--clr-surface-alt); }
+
+.skill-card__icon {
+  font-size: 1.75rem;
+  margin-bottom: var(--space-sm);
+  line-height: 1;
+}
+
+.skill-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.skill-card__body {
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   11. WORK / BREAKPOINTS SECTION — MOBILE FIRST
+   ============================================================ */
+.work {
+  padding-block: var(--space-xl);
+}
+
+/* Breakpoint cards — single column on mobile */
+.breakpoints {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.bp-card {
+  background-color: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition: border-color 0.2s;
+}
+.bp-card:hover { border-color: var(--clr-accent); }
+.bp-card--mid  { border-color: rgba(232, 197, 71, 0.3); }
+
+.bp-card__label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin-bottom: 0.25rem;
+}
+
+.bp-card__range {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.bp-card__desc {
+  font-size: 0.875rem;
+  color: var(--clr-text-muted);
+  margin-top: var(--space-sm);
+}
+
+/* Mini device mock inside bp-card */
+.bp-mock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: var(--clr-surface-alt);
+  border-radius: 6px;
+  padding: 10px;
+}
+.bp-mock__bar {
+  height: 6px;
+  width: 50%;
+  background-color: var(--clr-border);
+  border-radius: 3px;
+}
+.bp-mock__bar--full { width: 100%; }
+.bp-mock__row {
+  display: flex;
+  gap: 6px;
+}
+.bp-mock__block {
+  flex: 1;
+  height: 28px;
+  background-color: var(--clr-border);
+  border-radius: 4px;
+}
+
+/* Feature cards — single column on mobile */
+.features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.feature-card {
+  background-color: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s var(--ease-out);
+}
+.feature-card:hover {
+  border-color: var(--clr-accent);
+  transform: translateY(-4px);
+}
+.feature-card--active { border-color: var(--clr-accent); }
+
+.feature-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease-out);
+}
+.feature-card:hover img { transform: scale(1.04); }
+
+.feature-card__body { padding: var(--space-md); }
+
+.feature-card__tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  font-weight: 500;
+}
+
+.feature-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 3vw, 1.375rem);
+  font-weight: 700;
+  margin-block: 0.5rem;
+}
+
+.feature-card__desc {
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+}
+
+
+/* ============================================================
+   12. CONTACT
+   ============================================================ */
+.contact {
+  padding-block: var(--space-xl);
+  background-color: var(--clr-surface);
+  border-block: 1px solid var(--clr-border);
+  text-align: center;
+}
+
+.contact__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-block: var(--space-sm) var(--space-md);
+}
+.contact__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--clr-accent);
+}
+
+.contact__body {
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  color: var(--clr-text-muted);
+  max-width: 480px;
+  margin-inline: auto;
+  margin-bottom: var(--space-md);
+}
+
+
+/* ============================================================
+   13. SITE FOOTER
+   ============================================================ */
+.site-footer {
+  padding-block: var(--space-md);
+  border-top: 1px solid var(--clr-border);
+}
+
+/* Mobile: stacked */
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.site-footer__copy {
+  font-size: 0.8125rem;
+  color: var(--clr-text-muted);
+}
+
+.site-footer__nav {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.site-footer__link {
+  font-size: 0.8125rem;
+  color: var(--clr-text-muted);
+  min-height: var(--touch-target);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.site-footer__link:hover { color: var(--clr-text); }
+
+
+/* ============================================================
+   14. MEDIA QUERIES — MOBILE-FIRST (min-width)
+   Breakpoints from page 9: 480px | 768px | 1024px
+   ============================================================ */
+
+/* ── 480px — TABLET (small) ── */
+@media (min-width: 480px) {
+  .hero__inner {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero__text { flex: 1; }
+
+  .device-stack {
+    flex-shrink: 0;
+    width: 240px;
+    margin-inline: 0;
+  }
+
+  .about__photo { height: 360px; }
+
+  /* 2-column breakpoints grid */
+  .breakpoints {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* 2-column feature cards */
+  .features {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .site-footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* ── 768px — TABLET (large) — desktop nav appears ── */
+@media (min-width: 768px) {
+  /* Show desktop nav, hide hamburger */
+  .site-nav    { display: block; }
+  .hamburger   { display: none; }
+
+  .site-header { height: 72px; }
+
+  .hero { padding-block-start: calc(72px + 6rem); }
+
+  .device-stack { width: 320px; }
+
+  .device__card { height: 48px; }
+
+  /* About switches to 2-column grid */
+  .about__inner {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-lg);
+    align-items: start;
+    flex-direction: unset;
+  }
+
+  .about__photo { height: 460px; }
+
+  /* 3-col breakpoints */
+  .breakpoints {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* 3-col feature cards */
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── 1024px — DESKTOP ── */
+@media (min-width: 1024px) {
+  .device-stack { width: 400px; }
+
+  .device__grid { gap: 6px; }
+  .device__card { height: 56px; }
+
+  .hero__body { font-size: 1.125rem; }
+
+  .about__photo { height: 520px; }
+}
+/* Mobile nav styles - ensure it works */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--clr-bg);
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-md);
+}
+
+.mobile-nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  background: none;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  color: var(--clr-text);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  max-width: 320px;
+  list-style: none;
+}
+
+.mobile-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 56px;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: 700;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--clr-border);
+  transition: color 0.2s;
+}
+
+.mobile-nav__link:hover {
+  color: var(--clr-text);
+}
+
+.mobile-nav__link--cta {
+  background-color: var(--clr-accent);
+  color: var(--clr-bg);
+  border-radius: var(--radius-sm);
+  border-bottom: none;
+  margin-top: var(--space-sm);
+  font-size: 1rem;
+  font-family: var(--font-body);
+  padding: 0.75rem 1.5rem;
+}
+
+.mobile-nav__link--cta:hover {
+  background-color: var(--clr-accent-dim);
+  color: var(--clr-bg);
+}
+
+/* Hide mobile nav on desktop */
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none !important;
+  }
+}

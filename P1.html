@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Danish Saeed — Frontend Developer. DecodeLabs Batch 2026 Project 1 Submission." />
+  <title>Danish Saeed | Frontend Developer</title>
+
+  <!-- Google Fonts: Fraunces (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- External stylesheet — no inline styles -->
+  <link rel="stylesheet" href="P1.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER — navigation landmark
+  ============================================================ -->
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a href="#main" class="site-header__logo" aria-label="Go to main content">
+        <span class="site-header__logo-mark">Danish Saeed</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="#about">About</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#skills">Skills</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#work">Work</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--cta" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       MAIN — primary content landmark
+  ============================================================ -->
+  <main id="main">
+
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__inner container">
+        <div class="hero__text">
+          <p class="hero__eyebrow">Frontend Developer · Batch 2026</p>
+          <h1 class="hero__heading" id="hero-heading">
+            Building the web,<br />
+            <em>pixel by pixel.</em>
+          </h1>
+          <p class="hero__body">
+            Intern at DecodeLabs. I craft semantic, accessible HTML & CSS
+            layouts that are clean, readable, and built to last.
+          </p>
+          <a class="btn btn--primary" href="#work">View My Work</a>
+        </div>
+
+        <div class="hero__image-wrap" aria-hidden="true">
+          <div class="hero__blob"></div>
+          <img
+            class="hero__image"
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=900&fit=crop&crop=entropy"
+            alt="A developer's workspace with a laptop showing code"
+            width="800"
+            height="900"
+          />
+        </div>
+      </div>
+
+      <!-- Scrolling ticker -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>Semantic HTML&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>CSS Grid&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>Flexbox&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>BEM Methodology&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>Accessibility&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>W3C Validated&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>DRY Principle&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>Semantic HTML&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>CSS Grid&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>Flexbox&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>BEM Methodology&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>Accessibility&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>W3C Validated&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>DRY Principle&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="about__inner container">
+        <div class="about__image-col">
+          <figure class="about__figure">
+            <img
+              class="about__photo"
+              src="Me.jpeg"
+              alt="Portrait of Daanish, Frontend Developer intern"
+              width="600"
+              height="700"
+            />
+            <figcaption class="about__caption">
+              <span class="about__caption-badge">Available for Projects</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="about__text-col">
+          <h2 class="section-label" id="about-heading">About Me</h2>
+          <p class="about__headline">
+            Structure before style.<br />Meaning before markup.
+          </p>
+          <p class="about__body">
+            I'm a frontend developer intern at DecodeLabs (Batch 2026), currently
+            completing Project 1: Static Webpage Design. My focus is on building
+            a solid foundation — semantic HTML, clean CSS architecture, and
+            accessible layouts that work for every user.
+          </p>
+          <p class="about__body">
+            Before writing a single line of CSS, I plan the Information
+            Architecture. Every element has a purpose; every tag has meaning.
+            I believe the best frontend work is invisible — it just works.
+          </p>
+
+          <ul class="about__facts" aria-label="Quick facts">
+            <li class="about__fact">
+              <span class="about__fact-number">01</span>
+              <span class="about__fact-text">Semantic HTML first, always</span>
+            </li>
+            <li class="about__fact">
+              <span class="about__fact-number">02</span>
+              <span class="about__fact-text">External CSS · No inline styles</span>
+            </li>
+            <li class="about__fact">
+              <span class="about__fact-number">03</span>
+              <span class="about__fact-text">Grid for structure, Flex for alignment</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills" aria-labelledby="skills-heading">
+      <div class="skills__inner container">
+        <header class="section-header">
+          <h2 class="section-label" id="skills-heading">Core Skills</h2>
+          <p class="section-subtitle">The fundamentals that make great frontend work.</p>
+        </header>
+
+        <div class="skills__grid">
+
+          <article class="skill-card">
+            <div class="skill-card__icon" aria-hidden="true">⬛</div>
+            <h3 class="skill-card__title">HTML5 Structure</h3>
+            <p class="skill-card__body">
+              Semantic landmarks, proper heading hierarchy, ARIA attributes, and
+              W3C-valid markup that browsers and screen readers understand equally well.
+            </p>
+          </article>
+
+          <article class="skill-card skill-card--accent">
+            <div class="skill-card__icon" aria-hidden="true">🎨</div>
+            <h3 class="skill-card__title">CSS Engineering</h3>
+            <p class="skill-card__body">
+              External stylesheets, CSS custom properties, BEM methodology, and the
+              DRY principle. One master stylesheet. Zero repetition.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__icon" aria-hidden="true">📐</div>
+            <h3 class="skill-card__title">Layout Systems</h3>
+            <p class="skill-card__body">
+              CSS Grid for macro page architecture. Flexbox for micro component
+              alignment. The right tool for the right job.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__icon" aria-hidden="true">♿</div>
+            <h3 class="skill-card__title">Accessibility (A11Y)</h3>
+            <p class="skill-card__body">
+              Alt text on every image, 4.5:1 contrast ratios, keyboard navigation,
+              and semantic landmarks. The web must work for everyone.
+            </p>
+          </article>
+
+          <article class="skill-card skill-card--accent">
+            <div class="skill-card__icon" aria-hidden="true">🗺</div>
+            <h3 class="skill-card__title">Information Architecture</h3>
+            <p class="skill-card__body">
+              Sitemaps before code. Logical content hierarchy. Navigation with fewer
+              than 5 items. Structure that makes information findable.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__icon" aria-hidden="true">✅</div>
+            <h3 class="skill-card__title">Quality Validation</h3>
+            <p class="skill-card__body">
+              W3C Validator, Lighthouse audit, and visual regression checks before
+              any code ships. Zero errors allowed through the quality gate.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Portfolio / Work Section -->
+    <section class="work" id="work" aria-labelledby="work-heading">
+      <div class="work__inner container">
+        <header class="section-header">
+          <h2 class="section-label" id="work-heading">Selected Work</h2>
+          <p class="section-subtitle">Projects built during DecodeLabs training.</p>
+        </header>
+
+        <div class="work__grid">
+
+          <article class="work-card work-card--large">
+            <figure class="work-card__figure">
+              <img
+                class="work-card__image"
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&h=600&fit=crop"
+                alt="Screenshot of a clean code editor showing HTML and CSS"
+                width="900"
+                height="600"
+              />
+            </figure>
+            <div class="work-card__body">
+              <span class="work-card__tag">Project 01</span>
+              <h3 class="work-card__title">Static Webpage Design</h3>
+              <p class="work-card__desc">
+                A fully semantic, accessible HTML &amp; CSS webpage. No frameworks,
+                no JavaScript — pure structural mastery.
+              </p>
+              <p class="work-card__stack">HTML · CSS · Grid · Flexbox</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <figure class="work-card__figure">
+              <img
+                class="work-card__image"
+                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop"
+                alt="Multiple browser windows showing a responsive layout"
+                width="600"
+                height="400"
+              />
+            </figure>
+            <div class="work-card__body">
+              <span class="work-card__tag">Coming Soon · Project 02</span>
+              <h3 class="work-card__title">Responsive Layout</h3>
+              <p class="work-card__desc">
+                Mobile-first responsive design using media queries and a fluid grid system.
+              </p>
+              <p class="work-card__stack">HTML · CSS · Media Queries</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <figure class="work-card__figure">
+              <img
+                class="work-card__image"
+                src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop"
+                alt="A mobile phone showing a polished UI design"
+                width="600"
+                height="400"
+              />
+            </figure>
+            <div class="work-card__body">
+              <span class="work-card__tag">Coming Soon · Project 03</span>
+              <h3 class="work-card__title">Interactive UI Components</h3>
+              <p class="work-card__desc">
+                JavaScript-powered components — dropdowns, modals, and dynamic data rendering.
+              </p>
+              <p class="work-card__stack">HTML · CSS · JavaScript</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
+      <div class="contact__inner container">
+        <h2 class="contact__heading" id="contact-heading">
+          Let's build<br /><em>something great.</em>
+        </h2>
+        <p class="contact__body">
+          Open to feedback, collaboration, and learning opportunities.
+          Reach out and let's connect.
+        </p>
+        <a class="btn btn--outline" href="mailto:daanishsaeed593@gmail.com">Say Hello →</a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — contentinfo landmark
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner container">
+      <p class="site-footer__copy">
+        © 2026 Danish Saeed · DecodeLabs Frontend Development · Batch 2026
+      </p>
+      <nav class="site-footer__nav" aria-label="Footer navigation">
+        <a class="site-footer__link" href="#about">About</a>
+        <a class="site-footer__link" href="#skills">Skills</a>
+        <a class="site-footer__link" href="#work">Work</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

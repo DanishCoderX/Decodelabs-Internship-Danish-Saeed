@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A responsive webpage built for DecodeLabs Frontend Development Project 2." />
+  <title>DecodeLabs | Project 2 — Responsive Web Layout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="P2.css" />
+  <style>
+    /* Additional fix for mobile nav */
+    .mobile-nav:popover-open {
+      display: flex !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a href="#main" class="site-header__logo" aria-label="Go to main content">Danish Saeed</a>
+
+      <!-- DESKTOP NAV -->
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#about">About</a></li>
+          <li><a class="site-nav__link" href="#skills">Skills</a></li>
+          <li><a class="site-nav__link" href="#work">Work</a></li>
+          <li><a class="site-nav__link site-nav__link--cta" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- HAMBURGER BUTTON -->
+      <button
+        class="hamburger"
+ id="hamburger-btn"
+        aria-label="Open navigation menu"
+      >
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV - SIMPLE VERSION THAT WORKS -->
+  <div id="mobile-nav" class="mobile-nav" style="display: none;">
+    <button
+      class="mobile-nav__close"
+      id="close-nav"
+      aria-label="Close navigation menu"
+    >✕</button>
+    <nav aria-label="Mobile navigation">
+      <ul class="mobile-nav__list">
+        <li><a class="mobile-nav__link" href="#about">About</a></li>
+        <li><a class="mobile-nav__link" href="#skills">Skills</a></li>
+        <li><a class="mobile-nav__link" href="#work">Work</a></li>
+        <li><a class="mobile-nav__link mobile-nav__link--cta" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- MAIN -->
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__inner container">
+        <div class="hero__text">
+          <p class="eyebrow">Responsive Web Layout · Project 2</p>
+          <h1 class="hero__heading" id="hero-heading">
+            Fluid design,<br />
+            <em>any screen.</em>
+          </h1>
+          <p class="hero__body">
+            62.73% of web traffic is mobile. This layout adapts gracefully
+            from a 320px phone to a 1440px desktop — using mobile-first CSS,
+            media queries, and fluid units.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#work">See the Work</a>
+            <a class="btn btn--ghost" href="#skills">Core Skills</a>
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="device-stack">
+            <div class="device device--desktop">
+              <div class="device__screen">
+                <div class="device__bar device__bar--wide"></div>
+                <div class="device__bar"></div>
+                <div class="device__bar device__bar--short"></div>
+                <div class="device__grid">
+                  <div class="device__card"></div>
+                  <div class="device__card"></div>
+                  <div class="device__card"></div>
+                </div>
+              </div>
+            </div>
+            <div class="device device--mobile">
+              <div class="device__screen">
+                <div class="device__bar device__bar--wide"></div>
+                <div class="device__bar"></div>
+                <div class="device__bar device__bar--short"></div>
+                <div class="device__card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>Mobile-First&nbsp;·&nbsp;</span>
+          <span>Media Queries&nbsp;·&nbsp;</span>
+          <span>CSS Grid&nbsp;·&nbsp;</span>
+          <span>Flexbox&nbsp;·&nbsp;</span>
+          <span>clamp()&nbsp;·&nbsp;</span>
+          <span>Fluid Units&nbsp;·&nbsp;</span>
+          <span>Popover API&nbsp;·&nbsp;</span>
+          <span>44px Touch Targets&nbsp;·&nbsp;</span>
+          <span>WCAG Compliant&nbsp;·&nbsp;</span>
+          <span>Mobile-First&nbsp;·&nbsp;</span>
+          <span>Media Queries&nbsp;·&nbsp;</span>
+          <span>CSS Grid&nbsp;·&nbsp;</span>
+          <span>Flexbox&nbsp;·&nbsp;</span>
+          <span>clamp()&nbsp;·&nbsp;</span>
+          <span>Fluid Units&nbsp;·&nbsp;</span>
+          <span>Popover API&nbsp;·&nbsp;</span>
+          <span>44px Touch Targets&nbsp;·&nbsp;</span>
+          <span>WCAG Compliant&nbsp;·&nbsp;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="about__inner container">
+        <div class="about__image-col">
+          <figure class="about__figure">
+            <img
+              class="about__photo"
+              src="Me.jpeg"
+              alt="Portrait of Danish Saeed, Frontend Developer"
+              width="600"
+              height="700"
+              onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=700&fit=crop'"
+            />
+            <figcaption class="about__badge">Available for Projects</figcaption>
+          </figure>
+        </div>
+
+        <div class="about__text-col">
+          <p class="eyebrow" id="about-heading">About</p>
+          <h2 class="about__headline">
+            Structure first.<br />Fluidity always.
+          </h2>
+          <p class="about__body">
+            I'm completing DecodeLabs Frontend Development Batch 2026.
+            Project 2 focuses on responsive design — making layouts that
+            work seamlessly on every device, from a 320px phone to a
+            widescreen monitor.
+          </p>
+          <p class="about__body">
+            The mobile-first strategy means I write base CSS for small
+            screens, then use <code>@media (min-width: …)</code> to
+            progressively enhance for larger viewports.
+          </p>
+
+          <ul class="fact-list" aria-label="Quick facts">
+            <li class="fact-list__item">
+              <span class="fact-list__num">01</span>
+              <span>Mobile-first base CSS, enhanced upward</span>
+            </li>
+            <li class="fact-list__item">
+              <span class="fact-list__num">02</span>
+              <span>Fluid units: %, rem, vw, clamp()</span>
+            </li>
+            <li class="fact-list__item">
+              <span class="fact-list__num">03</span>
+              <span>Breakpoints at 480px · 768px · 1024px</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills" id="skills" aria-labelledby="skills-heading">
+      <div class="skills__inner container">
+        <header class="section-header">
+          <p class="eyebrow" id="skills-heading">Core Skills</p>
+          <h2 class="section-title">The responsive toolkit.</h2>
+        </header>
+
+        <div class="skills__grid">
+          <article class="skill-card">
+            <div class="skill-card__icon" aria-hidden="true">📐</div>
+            <h3 class="skill-card__title">Mobile-First CSS</h3>
+            <p class="skill-card__body">
+              Base styles target the smallest screen. Complexity is layered on
+              with <code>min-width</code> queries — never the other way around.
+            </p>
+          </article>
+
+          <article class="skill-card skill-card--accent">
+            <div class="skill-card__icon" aria-hidden="true">📏</div>
+            <h3 class="skill-card__title">Fluid Typography</h3>
+            <p class="skill-card__body">
+              <code>clamp(1rem, 2.5vw, 2rem)</code> replaces stepped
+              font-size breakpoints with a smooth, continuous scale.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__icon" aria-hidden="true">☰</div>
+            <h3 class="skill-card__title">Popover Navigation</h3>
+            <p class="skill-card__body">
+              The HTML Popover API powers a full-screen mobile menu with
+              a backdrop — zero JavaScript required.
+            </p>
+          </article>
+
+          <article class="skill-card skill-card--accent">
+            <div class="skill-card__icon" aria-hidden="true">⊞</div>
+            <h3 class="skill-card__title">CSS Grid</h3>
+            <p class="skill-card__body">
+              <code>repeat(auto-fit, minmax(250px, 1fr))</code> creates
+              a self-adjusting grid with no media queries needed.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__icon" aria-hidden="true">↔</div>
+            <h3 class="skill-card__title">Flexbox</h3>
+            <p class="skill-card__body">
+              One-dimensional alignment for nav bars, button groups,
+              and card internals. Direction flips at breakpoints.
+            </p>
+          </article>
+
+          <article class="skill-card skill-card--accent">
+            <div class="skill-card__icon" aria-hidden="true">👆</div>
+            <h3 class="skill-card__title">Touch Targets</h3>
+            <p class="skill-card__body">
+              Every interactive element meets the 44×44px minimum.
+              Zoom is never disabled. WCAG compliant throughout.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="work" id="work" aria-labelledby="work-heading">
+      <div class="work__inner container">
+        <header class="section-header">
+          <p class="eyebrow" id="work-heading">Breakpoints</p>
+          <h2 class="section-title">Bridges, not fences.</h2>
+        </header>
+
+        <div class="breakpoints">
+          <article class="bp-card">
+            <div class="bp-card__label">Mobile</div>
+            <div class="bp-card__range">0px → 479px</div>
+            <div class="bp-card__visual bp-card__visual--mobile" aria-hidden="true">
+              <div class="bp-mock">
+                <div class="bp-mock__bar bp-mock__bar--full"></div>
+                <div class="bp-mock__bar"></div>
+                <div class="bp-mock__block"></div>
+                <div class="bp-mock__block"></div>
+              </div>
+            </div>
+            <p class="bp-card__desc">Single column. Stacked layout. Hamburger nav. Full-width tap targets.</p>
+          </article>
+
+          <article class="bp-card bp-card--mid">
+            <div class="bp-card__label">Tablet</div>
+            <div class="bp-card__range">480px → 767px</div>
+            <div class="bp-card__visual bp-card__visual--tablet" aria-hidden="true">
+              <div class="bp-mock">
+                <div class="bp-mock__bar bp-mock__bar--full"></div>
+                <div class="bp-mock__row">
+                  <div class="bp-mock__block"></div>
+                  <div class="bp-mock__block"></div>
+                </div>
+              </div>
+            </div>
+            <p class="bp-card__desc">Two-column grid. Layout enhancements. Side-by-side content blocks.</p>
+          </article>
+
+          <article class="bp-card">
+            <div class="bp-card__label">Tablet+</div>
+            <div class="bp-card__range">768px → 1023px</div>
+            <div class="bp-card__visual" aria-hidden="true">
+              <div class="bp-mock">
+                <div class="bp-mock__bar bp-mock__bar--full"></div>
+                <div class="bp-mock__row">
+                  <div class="bp-mock__block"></div>
+                  <div class="bp-mock__block"></div>
+                  <div class="bp-mock__block"></div>
+                </div>
+              </div>
+            </div>
+            <p class="bp-card__desc">Desktop nav appears. Three-column grids. Full sidebar layouts.</p>
+          </article>
+
+          <article class="bp-card bp-card--mid">
+            <div class="bp-card__label">Desktop</div>
+            <div class="bp-card__range">1024px+</div>
+            <div class="bp-card__visual" aria-hidden="true">
+              <div class="bp-mock">
+                <div class="bp-mock__bar bp-mock__bar--full"></div>
+                <div class="bp-mock__row">
+                  <div class="bp-mock__block"></div>
+                  <div class="bp-mock__block"></div>
+                  <div class="bp-mock__block"></div>
+                  <div class="bp-mock__block"></div>
+                </div>
+              </div>
+            </div>
+            <p class="bp-card__desc">Full grid. High-res assets. Maximum content width capped at 1200px.</p>
+          </article>
+        </div>
+
+        <div class="features">
+          <article class="feature-card">
+            <img
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop"
+              alt="Code editor showing responsive CSS"
+              width="600"
+              height="400"
+              loading="lazy"
+            />
+            <div class="feature-card__body">
+              <span class="feature-card__tag">Project 01 — Complete</span>
+              <h3 class="feature-card__title">Static Webpage Design</h3>
+              <p class="feature-card__desc">Semantic HTML structure, external CSS, BEM methodology, and W3C-valid markup.</p>
+            </div>
+          </article>
+
+          <article class="feature-card feature-card--active">
+            <img
+              src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop"
+              alt="Multiple screens showing a responsive layout"
+              width="600"
+              height="400"
+              loading="lazy"
+            />
+            <div class="feature-card__body">
+              <span class="feature-card__tag">Project 02 — Current</span>
+              <h3 class="feature-card__title">Responsive Web Layout</h3>
+              <p class="feature-card__desc">Mobile-first CSS, media queries, fluid typography, hamburger nav, touch targets.</p>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <img
+              src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop"
+              alt="Phone showing interactive UI components"
+              width="600"
+              height="400"
+              loading="lazy"
+            />
+            <div class="feature-card__body">
+              <span class="feature-card__tag">Project 03 — Coming Soon</span>
+              <h3 class="feature-card__title">Interactive UI Components</h3>
+              <p class="feature-card__desc">JavaScript-powered dropdowns, modals, and dynamic data rendering.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
+      <div class="contact__inner container">
+        <p class="eyebrow">Get in Touch</p>
+        <h2 class="contact__heading" id="contact-heading">
+          Let's build<br /><em>something fluid.</em>
+        </h2>
+        <p class="contact__body">
+          Open to feedback, collaboration, and learning. Every breakpoint
+          is a new opportunity.
+        </p>
+        <a class="btn btn--outline" href="mailto:daanishsaeed593@gmail.com">Say Hello →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner container">
+      <p class="site-footer__copy">© 2026 DecodeLabs Frontend Development · Batch 2026</p>
+      <nav class="site-footer__nav" aria-label="Footer navigation">
+        <a class="site-footer__link" href="#about">About</a>
+        <a class="site-footer__link" href="#skills">Skills</a>
+        <a class="site-footer__link" href="#work">Work</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- WORKING JAVASCRIPT FOR MOBILE MENU -->
+  <script>
+    // Get elements
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const closeBtn = document.getElementById('close-nav');
+    const mobileLinks = document.querySelectorAll('.mobile-nav__link');
+
+    // Function to open menu
+    function openMenu() {
+      mobileNav.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+    }
+
+    // Function to close menu
+    function closeMenu() {
+      mobileNav.style.display = 'none';
+      document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Open menu when hamburger is clicked
+    hamburger.addEventListener('click', openMenu);
+
+    // Close menu when close button is clicked
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Close menu when a link is clicked
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        closeMenu();
+      });
+    });
+
+    // Close menu if clicking outside (on the backdrop)
+    mobileNav.addEventListener('click', function(e) {
+      if (e.target === mobileNav) {
+        closeMenu();
+      }
+    });
+
+    // Handle window resize - if resizing to desktop, ensure menu is closed
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 768) {
+        closeMenu();
+      }
+    });
+  </script>
+</body>
+</html>
