@@ -1,13 +1,3 @@
-/* ============================================================
-   style.css — DecodeLabs Project 2 · Responsive Web Layout
-   Strategy : MOBILE-FIRST (base = mobile, enhance upward)
-   Breakpoints: 480px | 768px | 1024px  (page 9)
-   ============================================================ */
-
-
-/* ============================================================
-   1. CSS CUSTOM PROPERTIES
-   ============================================================ */
 :root {
   --clr-bg:          #0f0e0e;
   --clr-surface:     #1a1918;
@@ -21,7 +11,6 @@
   --font-display: 'Fraunces', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
 
-  /* Fluid spacing using rem (fluid unit) */
   --space-xs:  0.5rem;
   --space-sm:  1rem;
   --space-md:  2rem;
@@ -34,16 +23,11 @@
   --radius-md: 12px;
   --radius-lg: 24px;
 
-  /* Touch target minimum — 44px (page 15) */
   --touch-target: 44px;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-
-/* ============================================================
-   2. RESET & BASE
-   ============================================================ */
 *,
 *::before,
 *::after {
@@ -55,7 +39,6 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  /* Never set user-scalable=no — allow up to 500% zoom (page 16) */
 }
 
 body {
@@ -86,12 +69,7 @@ code {
   color: var(--clr-accent);
 }
 
-
-/* ============================================================
-   3. LAYOUT UTILITIES
-   ============================================================ */
 .container {
-  /* Fluid width using % (fluid unit) */
   width: min(var(--max-width), 100% - (var(--gutter) * 2));
   margin-inline: auto;
 }
@@ -100,7 +78,6 @@ code {
   margin-bottom: var(--space-lg);
 }
 
-/* Fluid eyebrow label */
 .eyebrow {
   font-family: var(--font-body);
   font-size: 0.75rem;
@@ -111,7 +88,6 @@ code {
   margin-bottom: var(--space-xs);
 }
 
-/* Fluid section title using clamp() (page 13) */
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 4vw, 2.75rem);
@@ -119,15 +95,11 @@ code {
   line-height: 1.15;
 }
 
-
-/* ============================================================
-   4. BUTTONS — 44px min touch target (page 15)
-   ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--touch-target);   /* 44px touch target */
+  min-height: var(--touch-target);
   padding: 0 1.5rem;
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
@@ -170,10 +142,6 @@ code {
   color: var(--clr-bg);
 }
 
-
-/* ============================================================
-   5. SITE HEADER
-   ============================================================ */
 .site-header {
   position: fixed;
   inset-block-start: 0;
@@ -198,13 +166,11 @@ code {
   font-weight: 900;
   color: var(--clr-accent);
   line-height: 1;
-  /* Logo is also a touch target */
   min-height: var(--touch-target);
   display: flex;
   align-items: center;
 }
 
-/* DESKTOP NAV — hidden on mobile, shown on tablet+ */
 .site-nav { display: none; }
 
 .site-nav__list {
@@ -216,7 +182,6 @@ code {
 .site-nav__link {
   font-size: 0.875rem;
   color: var(--clr-text-muted);
-  /* 44px touch target height */
   min-height: var(--touch-target);
   display: flex;
   align-items: center;
@@ -236,16 +201,11 @@ code {
   color: var(--clr-bg);
 }
 
-
-/* ============================================================
-   6. HAMBURGER BUTTON — mobile only (page 14)
-   ============================================================ */
 .hamburger {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  /* 44×44px touch target */
   width: var(--touch-target);
   height: var(--touch-target);
   background: none;
@@ -266,47 +226,35 @@ code {
   transition: transform 0.2s;
 }
 
-
-/* ============================================================
-   7. MOBILE NAV POPOVER — HTML Popover API (page 14)
-   ============================================================ */
 .mobile-nav {
-  /* Reset popover defaults */
   position: fixed;
-  inset: 0;
-  margin: 0;
-  padding: var(--space-md);
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-  max-height: 100%;
-  border: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: var(--clr-bg);
+  z-index: 200;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 200;
-  /* Hidden by default — shown via popover API */
+  padding: var(--space-md);
   opacity: 0;
-  transition: opacity 0.25s var(--ease-out);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease-out), visibility 0.25s var(--ease-out);
 }
 
-/* Popover open state */
-.mobile-nav:popover-open {
+.mobile-nav.is-open {
   opacity: 1;
-}
-
-/* Backdrop */
-.mobile-nav::backdrop {
-  background-color: rgba(0, 0, 0, 0.7);
+  visibility: visible;
+  pointer-events: all;
 }
 
 .mobile-nav__close {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  /* 44×44px touch target */
   width: var(--touch-target);
   height: var(--touch-target);
   display: flex;
@@ -329,6 +277,7 @@ code {
   gap: var(--space-sm);
   width: 100%;
   max-width: 320px;
+  list-style: none;
 }
 
 .mobile-nav__link {
@@ -336,12 +285,12 @@ code {
   align-items: center;
   justify-content: center;
   width: 100%;
-  /* Large touch target for mobile */
   min-height: 56px;
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 6vw, 2rem);
   font-weight: 700;
   color: var(--clr-text-muted);
+  text-decoration: none;
   border-bottom: 1px solid var(--clr-border);
   transition: color 0.2s;
 }
@@ -355,13 +304,13 @@ code {
   margin-top: var(--space-sm);
   font-size: 1rem;
   font-family: var(--font-body);
+  padding: 0.75rem 1.5rem;
 }
-.mobile-nav__link--cta:hover { background-color: var(--clr-accent-dim); color: var(--clr-bg); }
+.mobile-nav__link--cta:hover {
+  background-color: var(--clr-accent-dim);
+  color: var(--clr-bg);
+}
 
-
-/* ============================================================
-   8. HERO — MOBILE FIRST
-   ============================================================ */
 .hero {
   padding-block-start: calc(64px + var(--space-lg));
   padding-block-end: 0;
@@ -369,13 +318,11 @@ code {
 }
 
 .hero__inner {
-  /* Mobile: single column stacked */
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
 }
 
-/* Fluid hero heading (clamp — page 13) */
 .hero__heading {
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 8vw, 5rem);
@@ -391,7 +338,6 @@ code {
 }
 
 .hero__body {
-  /* Fluid font size */
   font-size: clamp(1rem, 2.5vw, 1.125rem);
   color: var(--clr-text-muted);
   max-width: 52ch;
@@ -404,7 +350,6 @@ code {
   gap: var(--space-xs);
 }
 
-/* Device stack visual */
 .device-stack {
   position: relative;
   width: 100%;
@@ -460,7 +405,6 @@ code {
   border-radius: 4px;
 }
 
-/* Scrolling ticker */
 .ticker {
   margin-block-start: var(--space-xl);
   border-block: 1px solid var(--clr-border);
@@ -481,15 +425,10 @@ code {
   to   { transform: translateX(-50%); }
 }
 
-
-/* ============================================================
-   9. ABOUT — MOBILE FIRST
-   ============================================================ */
 .about {
   padding-block: var(--space-xl);
 }
 
-/* Mobile: stacked column */
 .about__inner {
   display: flex;
   flex-direction: column;
@@ -521,7 +460,6 @@ code {
   white-space: nowrap;
 }
 
-/* Fluid about headline */
 .about__headline {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 4vw, 2.5rem);
@@ -536,7 +474,6 @@ code {
   margin-bottom: var(--space-sm);
 }
 
-/* Fact list */
 .fact-list {
   margin-top: var(--space-md);
   border-top: 1px solid var(--clr-border);
@@ -549,7 +486,6 @@ code {
   border-bottom: 1px solid var(--clr-border);
   font-size: clamp(0.85rem, 2vw, 0.9375rem);
   color: var(--clr-text-muted);
-  /* Ensure 44px min height for readability */
   min-height: var(--touch-target);
 }
 .fact-list__num {
@@ -561,17 +497,12 @@ code {
   width: 2rem;
 }
 
-
-/* ============================================================
-   10. SKILLS — auto-fit grid (page 11)
-   ============================================================ */
 .skills {
   padding-block: var(--space-xl);
   background-color: var(--clr-surface);
   border-block: 1px solid var(--clr-border);
 }
 
-/* auto-fit grid: self-responsive, no media queries needed */
 .skills__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
@@ -609,15 +540,10 @@ code {
   line-height: 1.6;
 }
 
-
-/* ============================================================
-   11. WORK / BREAKPOINTS SECTION — MOBILE FIRST
-   ============================================================ */
 .work {
   padding-block: var(--space-xl);
 }
 
-/* Breakpoint cards — single column on mobile */
 .breakpoints {
   display: grid;
   grid-template-columns: 1fr;
@@ -657,7 +583,6 @@ code {
   margin-top: var(--space-sm);
 }
 
-/* Mini device mock inside bp-card */
 .bp-mock {
   display: flex;
   flex-direction: column;
@@ -684,7 +609,6 @@ code {
   border-radius: 4px;
 }
 
-/* Feature cards — single column on mobile */
 .features {
   display: grid;
   grid-template-columns: 1fr;
@@ -734,10 +658,6 @@ code {
   color: var(--clr-text-muted);
 }
 
-
-/* ============================================================
-   12. CONTACT
-   ============================================================ */
 .contact {
   padding-block: var(--space-xl);
   background-color: var(--clr-surface);
@@ -767,16 +687,11 @@ code {
   margin-bottom: var(--space-md);
 }
 
-
-/* ============================================================
-   13. SITE FOOTER
-   ============================================================ */
 .site-footer {
   padding-block: var(--space-md);
   border-top: 1px solid var(--clr-border);
 }
 
-/* Mobile: stacked */
 .site-footer__inner {
   display: flex;
   flex-direction: column;
@@ -805,13 +720,6 @@ code {
 }
 .site-footer__link:hover { color: var(--clr-text); }
 
-
-/* ============================================================
-   14. MEDIA QUERIES — MOBILE-FIRST (min-width)
-   Breakpoints from page 9: 480px | 768px | 1024px
-   ============================================================ */
-
-/* ── 480px — TABLET (small) ── */
 @media (min-width: 480px) {
   .hero__inner {
     flex-direction: row;
@@ -828,12 +736,10 @@ code {
 
   .about__photo { height: 360px; }
 
-  /* 2-column breakpoints grid */
   .breakpoints {
     grid-template-columns: 1fr 1fr;
   }
 
-  /* 2-column feature cards */
   .features {
     grid-template-columns: 1fr 1fr;
   }
@@ -845,11 +751,10 @@ code {
   }
 }
 
-/* ── 768px — TABLET (large) — desktop nav appears ── */
 @media (min-width: 768px) {
-  /* Show desktop nav, hide hamburger */
   .site-nav    { display: block; }
   .hamburger   { display: none; }
+  .mobile-nav   { display: none; }
 
   .site-header { height: 72px; }
 
@@ -859,7 +764,6 @@ code {
 
   .device__card { height: 48px; }
 
-  /* About switches to 2-column grid */
   .about__inner {
     display: grid;
     grid-template-columns: 5fr 7fr;
@@ -870,18 +774,15 @@ code {
 
   .about__photo { height: 460px; }
 
-  /* 3-col breakpoints */
   .breakpoints {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  /* 3-col feature cards */
   .features {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* ── 1024px — DESKTOP ── */
 @media (min-width: 1024px) {
   .device-stack { width: 400px; }
 
@@ -891,85 +792,4 @@ code {
   .hero__body { font-size: 1.125rem; }
 
   .about__photo { height: 520px; }
-}
-/* Mobile nav styles - ensure it works */
-.mobile-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--clr-bg);
-  z-index: 1000;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: var(--space-md);
-}
-
-.mobile-nav__close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: var(--touch-target);
-  height: var(--touch-target);
-  background: none;
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-sm);
-  color: var(--clr-text);
-  font-size: 1.25rem;
-  cursor: pointer;
-}
-
-.mobile-nav__list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-sm);
-  width: 100%;
-  max-width: 320px;
-  list-style: none;
-}
-
-.mobile-nav__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 56px;
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 6vw, 2rem);
-  font-weight: 700;
-  color: var(--clr-text-muted);
-  text-decoration: none;
-  border-bottom: 1px solid var(--clr-border);
-  transition: color 0.2s;
-}
-
-.mobile-nav__link:hover {
-  color: var(--clr-text);
-}
-
-.mobile-nav__link--cta {
-  background-color: var(--clr-accent);
-  color: var(--clr-bg);
-  border-radius: var(--radius-sm);
-  border-bottom: none;
-  margin-top: var(--space-sm);
-  font-size: 1rem;
-  font-family: var(--font-body);
-  padding: 0.75rem 1.5rem;
-}
-
-.mobile-nav__link--cta:hover {
-  background-color: var(--clr-accent-dim);
-  color: var(--clr-bg);
-}
-
-/* Hide mobile nav on desktop */
-@media (min-width: 768px) {
-  .mobile-nav {
-    display: none !important;
-  }
 }
