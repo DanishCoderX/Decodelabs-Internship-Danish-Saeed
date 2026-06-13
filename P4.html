@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="DecodeLabs Project 4 — Form Design and Validation with JavaScript." />
+  <title>DecodeLabs | Project 4 — Form Design & Validation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="P4.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a href="#main" class="site-header__logo">Danish Saeed</a>
+      <span class="site-header__subtitle">Project 4 · Form Design & Validation</span>
+    </div>
+  </header>
+  <main id="main">
+    <div class="page-layout container">
+      <aside class="info-panel" aria-label="Project information">
+        <p class="eyebrow">Project 4 · Batch 2026</p>
+        <h1 class="info-panel__heading">
+          Engineering<br /><em>the Architecture<br />of Trust.</em>
+        </h1>
+        <p class="info-panel__body">
+          A form is your application's primary security checkpoint.
+          We engineer it using the four-phase IPO pipeline.
+        </p>
+        <ol class="pipeline" aria-label="Validation pipeline phases">
+          <li class="pipeline__step pipeline__step--html">
+            <span class="pipeline__num">1</span>
+            <div>
+              <strong>Structure</strong>
+              <p>Semantic HTML — <code>&lt;form&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;input required&gt;</code></p>
+            </div>
+          </li>
+          <li class="pipeline__step pipeline__step--js">
+            <span class="pipeline__num">2</span>
+            <div>
+              <strong>Shield</strong>
+              <p><code>addEventListener('submit')</code> + <code>event.preventDefault()</code></p>
+            </div>
+          </li>
+          <li class="pipeline__step pipeline__step--regex">
+            <span class="pipeline__num">3</span>
+            <div>
+              <strong>Scan</strong>
+              <p>Regex logic gates inspect every field value</p>
+            </div>
+          </li>
+          <li class="pipeline__step pipeline__step--aria">
+            <span class="pipeline__num">4</span>
+            <div>
+              <strong>Communicate</strong>
+              <p>Dynamic feedback via <code>aria-invalid</code> + <code>aria-describedby</code></p>
+            </div>
+          </li>
+        </ol>
+      </aside>
+      <section class="form-panel" aria-labelledby="form-heading">
+        <div
+          class="success-banner js-success-banner is-hidden"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <span class="success-banner__icon" aria-hidden="true">✓</span>
+          <div>
+            <strong>Registration Successful!</strong>
+            <p class="js-success-name"></p>
+          </div>
+        </div>
+        <h2 class="form-panel__heading" id="form-heading">Create Your Account</h2>
+        <p class="form-panel__subheading">Fill in all fields below to register.</p>
+        <form
+          class="reg-form js-reg-form"
+          id="registration-form"
+          novalidate
+          aria-label="Registration form"
+        >
+          <div class="field js-field" id="field-name">
+            <label class="field__label" for="input-name">
+              Full Name <span class="field__required" aria-hidden="true">*</span>
+            </label>
+            <div class="field__input-wrap">
+              <input
+                type="text"
+                id="input-name"
+                name="fullName"
+                class="field__input js-input"
+                placeholder="e.g. Daanish Ahmed"
+                autocomplete="name"
+                required
+                aria-required="true"
+                aria-describedby="error-name"
+                aria-invalid="false"
+                maxlength="60"
+              />
+              <span class="field__status-icon" aria-hidden="true"></span>
+            </div>
+            <span
+              id="error-name"
+              class="field__error js-error"
+              role="alert"
+              aria-live="polite"
+              aria-atomic="true"
+            ></span>
+          </div>
+          <div class="field js-field" id="field-email">
+            <label class="field__label" for="input-email">
+              Email Address <span class="field__required" aria-hidden="true">*</span>
+            </label>
+            <div class="field__input-wrap">
+              <input
+                type="email"
+                id="input-email"
+                name="email"
+                class="field__input js-input"
+                placeholder="e.g. you@example.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="error-email"
+                aria-invalid="false"
+              />
+              <span class="field__status-icon" aria-hidden="true"></span>
+            </div>
+            <span
+              id="error-email"
+              class="field__error js-error"
+              role="alert"
+              aria-live="polite"
+              aria-atomic="true"
+            ></span>
+          </div>
+          <div class="field js-field" id="field-phone">
+            <label class="field__label" for="input-phone">
+              Phone Number <span class="field__optional">(optional)</span>
+            </label>
+            <div class="field__input-wrap">
+              <input
+                type="tel"
+                id="input-phone"
+                name="phone"
+                class="field__input js-input"
+                placeholder="e.g. +92 300 1234567"
+                autocomplete="tel"
+                aria-describedby="error-phone"
+                aria-invalid="false"
+              />
+              <span class="field__status-icon" aria-hidden="true"></span>
+            </div>
+            <span
+              id="error-phone"
+              class="field__error js-error"
+              role="alert"
+              aria-live="polite"
+              aria-atomic="true"
+            ></span>
+          </div>
+          <div class="field js-field" id="field-password">
+            <label class="field__label" for="input-password">
+              Password <span class="field__required" aria-hidden="true">*</span>
+            </label>
+            <div class="field__input-wrap">
+              <input
+                type="password"
+                id="input-password"
+                name="password"
+                class="field__input js-input"
+                placeholder="Min 8 chars, upper, lower, number, symbol"
+                autocomplete="new-password"
+                required
+                aria-required="true"
+                aria-describedby="error-password password-hint"
+                aria-invalid="false"
+              />
+              <button
+                type="button"
+                class="field__toggle-pw js-toggle-pw"
+                aria-label="Show password"
+                data-target="input-password"
+              >👁</button>
+              <span class="field__status-icon" aria-hidden="true"></span>
+            </div>
+            <span
+              id="error-password"
+              class="field__error js-error"
+              role="alert"
+              aria-live="polite"
+              aria-atomic="true"
+            ></span>
+            <div class="strength-meter" id="password-hint" aria-label="Password strength">
+              <div class="strength-meter__bar">
+                <div class="strength-meter__fill js-strength-fill"></div>
+              </div>
+              <ul class="strength-meter__rules js-strength-rules" aria-label="Password requirements">
+                <li class="strength-rule js-rule" data-rule="length">At least 8 characters</li>
+                <li class="strength-rule js-rule" data-rule="upper">One uppercase letter [A-Z]</li>
+                <li class="strength-rule js-rule" data-rule="lower">One lowercase letter [a-z]</li>
+                <li class="strength-rule js-rule" data-rule="digit">One digit [0-9]</li>
+                <li class="strength-rule js-rule" data-rule="special">One special character [#?!@$%^&*-]</li>
+              </ul>
+            </div>
+          </div>
+          <div class="field js-field" id="field-confirm">
+            <label class="field__label" for="input-confirm">
+              Confirm Password <span class="field__required" aria-hidden="true">*</span>
+            </label>
+            <div class="field__input-wrap">
+              <input
+                type="password"
+                id="input-confirm"
+                name="confirmPassword"
+                class="field__input js-input"
+                placeholder="Re-enter your password"
+                autocomplete="new-password"
+                required
+                aria-required="true"
+                aria-describedby="error-confirm"
+                aria-invalid="false"
+              />
+              <button
+                type="button"
+                class="field__toggle-pw js-toggle-pw"
+                aria-label="Show confirm password"
+                data-target="input-confirm"
+              >👁</button>
+              <span class="field__status-icon" aria-hidden="true"></span>
+            </div>
+            <span
+              id="error-confirm"
+              class="field__error js-error"
+              role="alert"
+              aria-live="polite"
+              aria-atomic="true"
+            ></span>
+          </div>
+          <div class="field field--checkbox js-field" id="field-terms">
+            <label class="field__checkbox-label" for="input-terms">
+              <input
+                type="checkbox"
+                id="input-terms"
+                name="terms"
+                class="field__checkbox js-input"
+                required
+                aria-required="true"
+                aria-describedby="error-terms"
+                aria-invalid="false"
+              />
+              <span>
+                I agree to the
+                <a href="#" class="form-link">Terms of Service</a>
+                and
+                <a href="#" class="form-link">Privacy Policy</a>
+              </span>
+            </label>
+            <span
+              id="error-terms"
+              class="field__error js-error"
+              role="alert"
+              aria-live="polite"
+              aria-atomic="true"
+            ></span>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full js-submit-btn">
+            <span class="js-btn-text">Create Account</span>
+            <span class="btn__spinner js-btn-spinner is-hidden" aria-hidden="true"></span>
+          </button>
+          <p class="form-footer">
+            Already have an account? <a href="#" class="form-link">Sign in</a>
+          </p>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner container">
+      <p>© 2026 DecodeLabs Frontend Development · Batch 2026</p>
+    </div>
+  </footer>
+  <script src="P4.js"></script>
+</body>
+</html>
