@@ -5,26 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Danish Saeed — Frontend Developer Portfolio. DecodeLabs Batch 2026 Projects Showcase." />
   <title>Danish Saeed | Frontend Developer Portfolio</title>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   />
-
   <link rel="stylesheet" href="P0.css" />
 </head>
 <body>
-
-  <!-- ============================================================
-       HEADER
-  ============================================================ -->
   <header class="site-header">
     <div class="site-header__inner container">
       <a href="#main" class="site-header__logo">Danish Saeed</a>
-
       <nav class="site-nav" aria-label="Primary navigation">
         <ul class="site-nav__list">
           <li><a class="site-nav__link" href="#about">About</a></li>
@@ -33,17 +25,10 @@
           <li><a class="site-nav__link site-nav__link--cta" href="#contact">Contact</a></li>
         </ul>
       </nav>
-
       <button class="theme-toggle js-theme-toggle" aria-label="Toggle dark mode">🌙</button>
     </div>
   </header>
-
-  <!-- ============================================================
-       MAIN
-  ============================================================ -->
   <main id="main">
-
-    <!-- HERO SECTION -->
     <section class="hero">
       <div class="hero__inner container">
         <div class="hero__content">
@@ -62,7 +47,6 @@
             <a class="btn btn--ghost" href="#contact">Let's Connect</a>
           </div>
         </div>
-
         <div class="hero__visual" aria-hidden="true">
           <div class="code-orbit">
             <div class="code-orbit__ring"></div>
@@ -73,8 +57,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Scrolling ticker -->
       <div class="ticker" aria-hidden="true">
         <div class="ticker__track">
           <span>Semantic HTML&nbsp;&nbsp;·&nbsp;&nbsp;</span>
@@ -85,6 +67,8 @@
           <span>Accessibility&nbsp;&nbsp;·&nbsp;&nbsp;</span>
           <span>BEM Methodology&nbsp;&nbsp;·&nbsp;&nbsp;</span>
           <span>Mobile-First&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>Form Validation&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>Regex&nbsp;&nbsp;·&nbsp;&nbsp;</span>
           <span>Semantic HTML&nbsp;&nbsp;·&nbsp;&nbsp;</span>
           <span>CSS Grid&nbsp;&nbsp;·&nbsp;&nbsp;</span>
           <span>Flexbox&nbsp;&nbsp;·&nbsp;&nbsp;</span>
@@ -93,11 +77,11 @@
           <span>Accessibility&nbsp;&nbsp;·&nbsp;&nbsp;</span>
           <span>BEM Methodology&nbsp;&nbsp;·&nbsp;&nbsp;</span>
           <span>Mobile-First&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>Form Validation&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+          <span>Regex&nbsp;&nbsp;·&nbsp;&nbsp;</span>
         </div>
       </div>
     </section>
-
-    <!-- ABOUT SECTION -->
     <section class="about" id="about" aria-labelledby="about-heading">
       <div class="about__inner container">
         <div class="about__image-col">
@@ -112,7 +96,6 @@
             <figcaption class="about__badge">Available for Work</figcaption>
           </figure>
         </div>
-
         <div class="about__text-col">
           <p class="eyebrow" id="about-heading">About Me</p>
           <h2 class="about__headline">
@@ -130,7 +113,6 @@
             and progressive enhancement. No frameworks — just pure,
             maintainable code that stands the test of time.
           </p>
-
           <ul class="fact-list" aria-label="Quick facts">
             <li class="fact-list__item">
               <span class="fact-list__num">01</span>
@@ -138,7 +120,7 @@
             </li>
             <li class="fact-list__item">
               <span class="fact-list__num">02</span>
-              <span>3 Complete Projects · Static · Responsive · Interactive</span>
+              <span>4 Complete Projects · Static · Responsive · Interactive · Forms</span>
             </li>
             <li class="fact-list__item">
               <span class="fact-list__num">03</span>
@@ -148,21 +130,17 @@
         </div>
       </div>
     </section>
-
-    <!-- PROJECTS SHOWCASE SECTION -->
     <section class="projects" id="projects" aria-labelledby="projects-heading">
       <div class="projects__inner container">
         <header class="section-header">
           <p class="eyebrow">Portfolio</p>
-          <h2 class="section-title" id="projects-heading">Three Projects.<br />Three Milestones.</h2>
+          <h2 class="section-title" id="projects-heading">Four Projects.<br />Four Milestones.</h2>
           <p class="section-desc">
-            From static structure to interactive experiences — each project
+            From static structure to form validation — each project
             demonstrates a different aspect of frontend development.
           </p>
         </header>
-
         <div class="projects__grid">
-          <!-- Project 1: Static Webpage -->
           <article class="project-card">
             <div class="project-card__badge">Project 01</div>
             <div class="project-card__icon" aria-hidden="true">📄</div>
@@ -184,30 +162,26 @@
               <span class="project-card__status status--complete">✓ Complete</span>
             </div>
           </article>
-
-          <!-- Project 2: Responsive Layout -->
-          <article class="project-card project-card--featured">
+          <article class="project-card">
             <div class="project-card__badge">Project 02</div>
             <div class="project-card__icon" aria-hidden="true">📱</div>
             <h3 class="project-card__title">Responsive Web Layout</h3>
             <p class="project-card__desc">
               Mobile-first responsive design using media queries, fluid typography
-              with clamp(), HTML Popover API for hamburger menu, and 44px touch
+              with clamp(), hamburger menu with JavaScript toggle, and 44px touch
               targets. Graceful enhancement from 320px to 4K.
             </p>
             <div class="project-card__stack">
               <span class="project-stack__item">Mobile-First</span>
               <span class="project-stack__item">Media Queries</span>
               <span class="project-stack__item">clamp()</span>
-              <span class="project-stack__item">Popover API</span>
+              <span class="project-stack__item">JavaScript</span>
             </div>
             <div class="project-card__links">
               <a href="P2.html" class="btn btn--primary btn--small">Live Demo →</a>
               <span class="project-card__status status--complete">✓ Complete</span>
             </div>
           </article>
-
-          <!-- Project 3: Interactive Elements -->
           <article class="project-card">
             <div class="project-card__badge">Project 03</div>
             <div class="project-card__icon" aria-hidden="true">⚡</div>
@@ -228,11 +202,29 @@
               <span class="project-card__status status--complete">✓ Complete</span>
             </div>
           </article>
+          <article class="project-card">
+            <div class="project-card__badge">Project 04</div>
+            <div class="project-card__icon" aria-hidden="true">🛡️</div>
+            <h3 class="project-card__title">Form Design & Validation</h3>
+            <p class="project-card__desc">
+              A complete registration form with JavaScript validation using regex
+              scanners, password strength meter, aria-invalid feedback, and the
+              four-phase IPO pipeline for secure form submission.
+            </p>
+            <div class="project-card__stack">
+              <span class="project-stack__item">Forms</span>
+              <span class="project-stack__item">Regex</span>
+              <span class="project-stack__item">Validation</span>
+              <span class="project-stack__item">Accessibility</span>
+            </div>
+            <div class="project-card__links">
+              <a href="P4.html" class="btn btn--primary btn--small">Live Demo →</a>
+              <span class="project-card__status status--complete">✓ Complete</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
-
-    <!-- SKILLS SECTION -->
     <section class="skills" id="skills" aria-labelledby="skills-heading">
       <div class="skills__inner container">
         <header class="section-header">
@@ -240,7 +232,6 @@
           <h2 class="section-title" id="skills-heading">Tools & Technologies</h2>
           <p class="section-desc">The skills I've mastered throughout the DecodeLabs program.</p>
         </header>
-
         <div class="skills__grid">
           <div class="skill-badge">
             <span class="skill-badge__icon">📝</span>
@@ -282,11 +273,14 @@
             <span class="skill-badge__name">W3C Validation</span>
             <span class="skill-badge__level">Zero Errors · Quality Gates</span>
           </div>
+          <div class="skill-badge">
+            <span class="skill-badge__icon">🛡️</span>
+            <span class="skill-badge__name">Form Validation</span>
+            <span class="skill-badge__level">Regex · Input Sanitization</span>
+          </div>
         </div>
       </div>
     </section>
-
-    <!-- CONTACT SECTION -->
     <section class="contact" id="contact" aria-labelledby="contact-heading">
       <div class="contact__inner container">
         <p class="eyebrow">Get In Touch</p>
@@ -303,10 +297,7 @@
         </div>
       </div>
     </section>
-
   </main>
-
-  <!-- FOOTER -->
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner container">
       <p class="site-footer__copy">© 2026 Danish Saeed · DecodeLabs Frontend Development · Batch 2026</p>
@@ -317,9 +308,7 @@
       </nav>
     </div>
   </footer>
-
   <script>
-    // Theme Toggle
     const themeToggle = document.querySelector('.js-theme-toggle');
     let isDark = localStorage.getItem('dl-theme') !== 'light';
 
@@ -337,7 +326,6 @@
     if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
     applyTheme();
 
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const target = document.querySelector(this.getAttribute('href'));
