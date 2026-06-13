@@ -9,21 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="P2.css" />
-  <style>
-    /* Additional fix for mobile nav */
-    .mobile-nav:popover-open {
-      display: flex !important;
-    }
-  </style>
 </head>
 <body>
-
-  <!-- HEADER -->
   <header class="site-header">
     <div class="site-header__inner container">
       <a href="#main" class="site-header__logo" aria-label="Go to main content">Danish Saeed</a>
-
-      <!-- DESKTOP NAV -->
       <nav class="site-nav" aria-label="Primary navigation">
         <ul class="site-nav__list">
           <li><a class="site-nav__link" href="#about">About</a></li>
@@ -32,12 +22,10 @@
           <li><a class="site-nav__link site-nav__link--cta" href="#contact">Contact</a></li>
         </ul>
       </nav>
-
-      <!-- HAMBURGER BUTTON -->
       <button
-        class="hamburger"
- id="hamburger-btn"
+        class="hamburger js-hamburger"
         aria-label="Open navigation menu"
+        aria-expanded="false"
       >
         <span class="hamburger__bar"></span>
         <span class="hamburger__bar"></span>
@@ -45,12 +33,9 @@
       </button>
     </div>
   </header>
-
-  <!-- MOBILE NAV - SIMPLE VERSION THAT WORKS -->
-  <div id="mobile-nav" class="mobile-nav" style="display: none;">
+  <div class="mobile-nav js-mobile-nav" aria-hidden="true">
     <button
-      class="mobile-nav__close"
-      id="close-nav"
+      class="mobile-nav__close js-mobile-nav-close"
       aria-label="Close navigation menu"
     >✕</button>
     <nav aria-label="Mobile navigation">
@@ -62,11 +47,7 @@
       </ul>
     </nav>
   </div>
-
-  <!-- MAIN -->
   <main id="main">
-
-    <!-- HERO -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero__inner container">
         <div class="hero__text">
@@ -85,7 +66,6 @@
             <a class="btn btn--ghost" href="#skills">Core Skills</a>
           </div>
         </div>
-
         <div class="hero__visual" aria-hidden="true">
           <div class="device-stack">
             <div class="device device--desktop">
@@ -111,7 +91,6 @@
           </div>
         </div>
       </div>
-
       <div class="ticker" aria-hidden="true">
         <div class="ticker__track">
           <span>Mobile-First&nbsp;·&nbsp;</span>
@@ -135,8 +114,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ABOUT -->
     <section class="about" id="about" aria-labelledby="about-heading">
       <div class="about__inner container">
         <div class="about__image-col">
@@ -152,7 +129,6 @@
             <figcaption class="about__badge">Available for Projects</figcaption>
           </figure>
         </div>
-
         <div class="about__text-col">
           <p class="eyebrow" id="about-heading">About</p>
           <h2 class="about__headline">
@@ -169,7 +145,6 @@
             screens, then use <code>@media (min-width: …)</code> to
             progressively enhance for larger viewports.
           </p>
-
           <ul class="fact-list" aria-label="Quick facts">
             <li class="fact-list__item">
               <span class="fact-list__num">01</span>
@@ -187,15 +162,12 @@
         </div>
       </div>
     </section>
-
-    <!-- SKILLS -->
     <section class="skills" id="skills" aria-labelledby="skills-heading">
       <div class="skills__inner container">
         <header class="section-header">
           <p class="eyebrow" id="skills-heading">Core Skills</p>
           <h2 class="section-title">The responsive toolkit.</h2>
         </header>
-
         <div class="skills__grid">
           <article class="skill-card">
             <div class="skill-card__icon" aria-hidden="true">📐</div>
@@ -205,7 +177,6 @@
               with <code>min-width</code> queries — never the other way around.
             </p>
           </article>
-
           <article class="skill-card skill-card--accent">
             <div class="skill-card__icon" aria-hidden="true">📏</div>
             <h3 class="skill-card__title">Fluid Typography</h3>
@@ -214,7 +185,6 @@
               font-size breakpoints with a smooth, continuous scale.
             </p>
           </article>
-
           <article class="skill-card">
             <div class="skill-card__icon" aria-hidden="true">☰</div>
             <h3 class="skill-card__title">Popover Navigation</h3>
@@ -223,7 +193,6 @@
               a backdrop — zero JavaScript required.
             </p>
           </article>
-
           <article class="skill-card skill-card--accent">
             <div class="skill-card__icon" aria-hidden="true">⊞</div>
             <h3 class="skill-card__title">CSS Grid</h3>
@@ -232,7 +201,6 @@
               a self-adjusting grid with no media queries needed.
             </p>
           </article>
-
           <article class="skill-card">
             <div class="skill-card__icon" aria-hidden="true">↔</div>
             <h3 class="skill-card__title">Flexbox</h3>
@@ -241,7 +209,6 @@
               and card internals. Direction flips at breakpoints.
             </p>
           </article>
-
           <article class="skill-card skill-card--accent">
             <div class="skill-card__icon" aria-hidden="true">👆</div>
             <h3 class="skill-card__title">Touch Targets</h3>
@@ -253,15 +220,12 @@
         </div>
       </div>
     </section>
-
-    <!-- WORK -->
     <section class="work" id="work" aria-labelledby="work-heading">
       <div class="work__inner container">
         <header class="section-header">
           <p class="eyebrow" id="work-heading">Breakpoints</p>
           <h2 class="section-title">Bridges, not fences.</h2>
         </header>
-
         <div class="breakpoints">
           <article class="bp-card">
             <div class="bp-card__label">Mobile</div>
@@ -276,7 +240,6 @@
             </div>
             <p class="bp-card__desc">Single column. Stacked layout. Hamburger nav. Full-width tap targets.</p>
           </article>
-
           <article class="bp-card bp-card--mid">
             <div class="bp-card__label">Tablet</div>
             <div class="bp-card__range">480px → 767px</div>
@@ -291,7 +254,6 @@
             </div>
             <p class="bp-card__desc">Two-column grid. Layout enhancements. Side-by-side content blocks.</p>
           </article>
-
           <article class="bp-card">
             <div class="bp-card__label">Tablet+</div>
             <div class="bp-card__range">768px → 1023px</div>
@@ -307,7 +269,6 @@
             </div>
             <p class="bp-card__desc">Desktop nav appears. Three-column grids. Full sidebar layouts.</p>
           </article>
-
           <article class="bp-card bp-card--mid">
             <div class="bp-card__label">Desktop</div>
             <div class="bp-card__range">1024px+</div>
@@ -325,7 +286,6 @@
             <p class="bp-card__desc">Full grid. High-res assets. Maximum content width capped at 1200px.</p>
           </article>
         </div>
-
         <div class="features">
           <article class="feature-card">
             <img
@@ -341,7 +301,6 @@
               <p class="feature-card__desc">Semantic HTML structure, external CSS, BEM methodology, and W3C-valid markup.</p>
             </div>
           </article>
-
           <article class="feature-card feature-card--active">
             <img
               src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop"
@@ -356,7 +315,6 @@
               <p class="feature-card__desc">Mobile-first CSS, media queries, fluid typography, hamburger nav, touch targets.</p>
             </div>
           </article>
-
           <article class="feature-card">
             <img
               src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop"
@@ -374,8 +332,6 @@
         </div>
       </div>
     </section>
-
-    <!-- CONTACT -->
     <section class="contact" id="contact" aria-labelledby="contact-heading">
       <div class="contact__inner container">
         <p class="eyebrow">Get in Touch</p>
@@ -389,10 +345,7 @@
         <a class="btn btn--outline" href="mailto:daanishsaeed593@gmail.com">Say Hello →</a>
       </div>
     </section>
-
   </main>
-
-  <!-- FOOTER -->
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner container">
       <p class="site-footer__copy">© 2026 DecodeLabs Frontend Development · Batch 2026</p>
@@ -403,53 +356,68 @@
       </nav>
     </div>
   </footer>
-
-  <!-- WORKING JAVASCRIPT FOR MOBILE MENU -->
   <script>
-    // Get elements
-    const hamburger = document.getElementById('hamburger-btn');
-    const mobileNav = document.getElementById('mobile-nav');
-    const closeBtn = document.getElementById('close-nav');
-    const mobileLinks = document.querySelectorAll('.mobile-nav__link');
+    (function() {
+      const hamburger = document.querySelector('.js-hamburger');
+      const mobileNav = document.querySelector('.js-mobile-nav');
+      const closeBtn = document.querySelector('.js-mobile-nav-close');
+      const mobileLinks = document.querySelectorAll('.mobile-nav__link');
+      let isOpen = false;
 
-    // Function to open menu
-    function openMenu() {
-      mobileNav.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-    }
+      function openMenu() {
+        isOpen = true;
+        mobileNav.classList.add('is-open');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        hamburger.setAttribute('aria-expanded', 'true');
+        hamburger.setAttribute('aria-label', 'Close navigation menu');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
 
-    // Function to close menu
-    function closeMenu() {
-      mobileNav.style.display = 'none';
-      document.body.style.overflow = ''; // Restore scrolling
-    }
+      function closeMenu() {
+        isOpen = false;
+        mobileNav.classList.remove('is-open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open navigation menu');
+        document.body.style.overflow = '';
+        hamburger.focus();
+      }
 
-    // Open menu when hamburger is clicked
-    hamburger.addEventListener('click', openMenu);
-
-    // Close menu when close button is clicked
-    closeBtn.addEventListener('click', closeMenu);
-
-    // Close menu when a link is clicked
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        closeMenu();
+      hamburger.addEventListener('click', function() {
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
       });
-    });
 
-    // Close menu if clicking outside (on the backdrop)
-    mobileNav.addEventListener('click', function(e) {
-      if (e.target === mobileNav) {
-        closeMenu();
-      }
-    });
+      closeBtn.addEventListener('click', closeMenu);
 
-    // Handle window resize - if resizing to desktop, ensure menu is closed
-    window.addEventListener('resize', function() {
-      if (window.innerWidth >= 768) {
-        closeMenu();
-      }
-    });
+      mobileLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          closeMenu();
+        });
+      });
+
+      mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isOpen) {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768 && isOpen) {
+          closeMenu();
+        }
+      });
+    })();
   </script>
 </body>
 </html>
