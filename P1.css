@@ -1,29 +1,16 @@
-/* ============================================================
-   style.css — DecodeLabs Project 1 · Static Webpage Design
-   Author   : Daanish
-   Standard : External CSS only · DRY · BEM · No IDs for styling
-   ============================================================ */
-
-
-/* ============================================================
-   1. CSS CUSTOM PROPERTIES (Design Tokens)
-   ============================================================ */
 :root {
-  /* — Color Palette — */
   --clr-bg:          #0f0e0e;
   --clr-surface:     #1a1918;
   --clr-surface-alt: #222120;
-  --clr-accent:      #e8c547;       /* amber gold */
+  --clr-accent:      #e8c547;
   --clr-accent-dim:  #c9a830;
   --clr-text:        #f0ede8;
   --clr-text-muted:  #8a8480;
   --clr-border:      #2e2c2b;
 
-  /* — Typography — */
   --font-display: 'Fraunces', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
 
-  /* — Spacing Scale — */
   --space-xs:  0.5rem;
   --space-sm:  1rem;
   --space-md:  2rem;
@@ -31,21 +18,15 @@
   --space-xl:  8rem;
   --space-2xl: 12rem;
 
-  /* — Layout — */
   --max-width:  1200px;
   --gutter:     1.5rem;
   --radius-sm:  4px;
   --radius-md:  12px;
   --radius-lg:  24px;
 
-  /* — Transitions — */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-
-/* ============================================================
-   2. RESET & BASE
-   ============================================================ */
 *,
 *::before,
 *::after {
@@ -84,18 +65,11 @@ ul {
   list-style: none;
 }
 
-
-/* ============================================================
-   3. LAYOUT UTILITIES
-   ============================================================ */
-
-/* Container — reusable across every section */
 .container {
   width: min(var(--max-width), 100% - (var(--gutter) * 2));
   margin-inline: auto;
 }
 
-/* Section header block — DRY reuse across sections */
 .section-header {
   margin-bottom: var(--space-lg);
   max-width: 560px;
@@ -116,10 +90,6 @@ ul {
   color: var(--clr-text-muted);
 }
 
-
-/* ============================================================
-   4. BUTTONS — DRY component, BEM modifier for variants
-   ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -161,10 +131,6 @@ ul {
   color: var(--clr-bg);
 }
 
-
-/* ============================================================
-   5. SITE HEADER
-   ============================================================ */
 .site-header {
   position: fixed;
   inset-block-start: 0;
@@ -191,7 +157,6 @@ ul {
   line-height: 1;
 }
 
-/* Primary navigation */
 .site-nav__list {
   display: flex;
   align-items: center;
@@ -223,10 +188,6 @@ ul {
   color: var(--clr-bg);
 }
 
-
-/* ============================================================
-   6. HERO SECTION
-   ============================================================ */
 .hero {
   padding-block-start: calc(72px + var(--space-xl));
   padding-block-end: 0;
@@ -249,7 +210,6 @@ ul {
   margin-bottom: var(--space-sm);
 }
 
-/* Single h1 — Page Topic / Zero Point */
 .hero__heading {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -272,7 +232,6 @@ ul {
   margin-bottom: var(--space-md);
 }
 
-/* Hero image with decorative blob */
 .hero__image-wrap {
   position: relative;
   display: flex;
@@ -299,7 +258,6 @@ ul {
   border: 1px solid var(--clr-border);
 }
 
-/* Scrolling ticker */
 .ticker {
   margin-block-start: var(--space-xl);
   border-block: 1px solid var(--clr-border);
@@ -322,10 +280,6 @@ ul {
   to   { transform: translateX(-50%); }
 }
 
-
-/* ============================================================
-   7. ABOUT SECTION
-   ============================================================ */
 .about {
   padding-block: var(--space-xl);
 }
@@ -386,7 +340,6 @@ ul {
   50%       { opacity: 0.3; }
 }
 
-/* Text column */
 .about__headline {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 3vw, 2.5rem);
@@ -400,7 +353,6 @@ ul {
   margin-bottom: var(--space-sm);
 }
 
-/* Quick-facts list */
 .about__facts {
   display: flex;
   flex-direction: column;
@@ -431,10 +383,6 @@ ul {
   color: var(--clr-text-muted);
 }
 
-
-/* ============================================================
-   8. SKILLS SECTION
-   ============================================================ */
 .skills {
   padding-block: var(--space-xl);
   background-color: var(--clr-surface);
@@ -451,7 +399,6 @@ ul {
   overflow: hidden;
 }
 
-/* Skill card — BEM block */
 .skill-card {
   background-color: var(--clr-surface);
   padding: var(--space-md);
@@ -485,15 +432,10 @@ ul {
   line-height: 1.6;
 }
 
-
-/* ============================================================
-   9. WORK / PORTFOLIO SECTION
-   ============================================================ */
 .work {
   padding-block: var(--space-xl);
 }
 
-/* Asymmetric grid: large card + two smaller cards */
 .work__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -501,7 +443,6 @@ ul {
   gap: var(--space-md);
 }
 
-/* Work card — BEM block */
 .work-card {
   background-color: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -515,7 +456,6 @@ ul {
   transform: translateY(-4px);
 }
 
-/* Large card spans both columns */
 .work-card--large {
   grid-column: 1 / -1;
   display: grid;
@@ -585,10 +525,6 @@ ul {
   border-block-start: 1px solid var(--clr-border);
 }
 
-
-/* ============================================================
-   10. CONTACT SECTION
-   ============================================================ */
 .contact {
   padding-block: var(--space-xl);
   background-color: var(--clr-surface);
@@ -619,10 +555,6 @@ ul {
   margin-bottom: var(--space-md);
 }
 
-
-/* ============================================================
-   11. SITE FOOTER
-   ============================================================ */
 .site-footer {
   padding-block: var(--space-md);
   border-block-start: 1px solid var(--clr-border);
@@ -656,10 +588,6 @@ ul {
   color: var(--clr-text);
 }
 
-
-/* ============================================================
-   12. RESPONSIVE — Mobile breakpoints
-   ============================================================ */
 @media (max-width: 900px) {
   .hero__inner {
     grid-template-columns: 1fr;
